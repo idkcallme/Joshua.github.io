@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -40,6 +41,16 @@
          }
          .file-tree .file::after {
              content: '📄 '; /* File icon */
+         }
+
+         /* Custom style for the skill category circle (if still used) */
+         .skill-category-circle {
+             width: 1.5rem;
+             height: 1.5rem;
+             border-radius: 50%;
+             background-color: #3b82f6; /* blue-500 */
+             margin-right: 0.5rem;
+             flex-shrink: 0;
          }
     </style>
 </head>
@@ -104,8 +115,49 @@
                             <div class="w-full bg-gray-700 rounded-full h-2">
                                 <div class="bg-blue-500 h-2 rounded-full" style="width: 90%;"></div> </div>
                         </div>
-                         </div>
+                         <div>
+                            <p class="mb-1">Confident</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                         <div>
+                            <p class="mb-1">Leadership</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                         <div>
+                            <p class="mb-1">Sociable</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 92%;"></div>
+                            </div>
+                        </div>
+                         <div>
+                            <p class="mb-1">Responsible</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 98%;"></div>
+                            </div>
+                        </div>
+                         <div>
+                            <p class="mb-1">Adaptable</p>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </section>
+
+                 <section class="mb-8 w-full">
+                    <h2 class="text-2xl font-semibold text-blue-400 mb-4 border-b border-gray-700 pb-2">CHARACTER</h2>
+                    <div class="w-full max-w-xs mx-auto mb-2">
+                         <canvas id="characterRadarChart"></canvas>
+                    </div>
+                     <p class="text-center text-blue-800 text-xs italic">
+                        Sarcasm purple, they said. Looks kinda dark blue to me.
+                    </p>
+                     </section>
+
 
                  <section class="mb-8 w-full">
                     <h2 class="text-2xl font-semibold text-blue-400 mb-4 border-b border-gray-700 pb-2">LANGUAGES</h2>
@@ -150,30 +202,96 @@
 
             <main class="lg:w-2/3 bg-gray-800 text-gray-300 p-8">
 
-                 <section class="mb-8">
-                    <h2 class="text-2xl font-bold text-blue-400 mb-6 border-b-2 border-blue-600 pb-2">PROFESSIONAL SKILLS</h2>
-                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-400 text-sm">
-                        <div>
-                            <p class="mb-1">Networking</p>
-                             <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-blue-500 h-2 rounded-full" style="width: 90%;"></div> </div>
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold text-blue-400 mb-6 border-b-2 border-blue-600 pb-2">TECHNICAL SKILLS</h2>
+
+                    <div class="w-full max-w-md mx-auto mb-8">
+                         <canvas id="technicalSkillsBarChart"></canvas>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-gray-400 text-sm">
+
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Networking</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Network Administration & Design (Cisco Packet Tracer)</li>
+                                <li>Network Infrastructure Management (Routers, Switches, Firewalls, Wi-Fi)</li>
+                                <li>Network Troubleshooting (TCP/IP, OSI Model, Wireshark)</li>
+                                <li>VPN Configuration</li>
+                                <li>Core Network Services (DHCP, DNS, Active Directory)</li>
+                                <li>Email Server Administration (Postfix, Dovecot, Exchange)</li>
+                            </ul>
                         </div>
-                         <div>
-                            <p class="mb-1">Cybersecurity</p>
-                             <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-blue-500 h-2 rounded-full" style="width: 85%;"></div> </div>
+
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Cloud</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Microsoft Azure Fundamentals (AZ-900 Concepts)</li>
+                            </ul>
                         </div>
-                         <div>
-                            <p class="mb-1">IT Support</p>
-                             <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-blue-500 h-2 rounded-full" style="width: 95%;"></div> </div>
+
+                         <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Cybersecurity</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Network Security Principles & Monitoring (SolarWinds, SIEM)</li>
+                                <li>Penetration Testing Methodologies & Documentation</li>
+                                <li>Vulnerability Identification & Reconnaissance</li>
+                                <li>Bug Bounty Platforms (HackerOne)</li>
+                                <li>Digital Forensics Fundamentals</li>
+                                <li>Mobile Device Management (Intune)</li>
+                            </ul>
                         </div>
-                         <div>
-                            <p class="mb-1">Programming (Python, JS, etc.)</p>
-                             <div class="w-full bg-gray-700 rounded-full h-2">
-                                <div class="bg-blue-500 h-2 rounded-full" style="width: 80%;"></div> </div>
+
+                        <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">IT Support</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Technical Support, Ticket Resolution (40/week avg)</li>
+                                <li>System Administration (Linux, Windows Server Basics)</li>
+                                <li>Problem Resolution</li>
+                                <li>Ticketing Systems</li>
+                            </ul>
                         </div>
-                         </div>
+
+                         <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Operating Systems</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Linux/Unix Environments</li>
+                                <li>Windows Server</li>
+                                <li>Kernel Development Fundamentals</li>
+                            </ul>
+                        </div>
+
+                         <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Programming & Automation</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Scripting & Development Languages:</li>
+                                <ul class="list-circle list-inside ml-4 space-y-1">
+                                    <li>Python (incl. Speech Recognition, Network Analysis)</li>
+                                    <li>JavaScript</li>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>Lua</li>
+                                    <li>PowerShell</li>
+                                    <li>Bash</li>
+                                </ul>
+                                <li>Automation Tool Development (Onboarding/Offboarding, Bulk Email, Subnet Finder, Ansible Linux)</li>
+                            </ul>
+                        </div>
+
+                         <div class="bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-gray-200 mb-3">Logistics & Operations</h3>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Inventory Management</li>
+                                <li>Receiving & Shipping</li>
+                                <li>Picking & Packing</li>
+                                <li>Forklift Operation (Counterbalance)</li>
+                                <li>Pallet Jack Operation</li>
+                                <li>Assembly Tasks</li>
+                                <li>Safety Protocol Adherence</li>
+                            </ul>
+                        </div>
+
+                    </div>
                 </section>
 
                  <hr class="my-8 border-gray-700">
@@ -234,7 +352,7 @@
                     </div>
                     <div>
                         <h3 class="text-xl font-semibold text-gray-300">High School Diploma | St. Martin Secondary School | Mississauga, ON</h3>
-                        <p class="text-gray-400 text-sm">Graduated: Jul 2021</p>
+                        <p class="text-gray-400 text-sm">Graduated: Jul 2921</p>
                     </div>
                 </section>
 
@@ -399,6 +517,148 @@
             </main>
         </div>
     </div>
+
+    <script>
+        // Data for the technical skills bar chart
+        const technicalSkillsData = {
+            labels: ['Networking', 'Cybersecurity', 'IT Support', 'Operating Systems', 'Programming & Automation', 'Logistics & Operations', 'Cloud'], // Categories from your skills
+            datasets: [{
+                label: 'Proficiency',
+                data: [90, 85, 95, 80, 88, 70, 75], // Arbitrary proficiency values (0-100)
+                backgroundColor: '#3b82f6', // blue-500
+                borderColor: '#1f2937', // gray-800
+                borderWidth: 1
+            }]
+        };
+
+        // Configuration options for the technical skills bar chart
+        const technicalSkillsConfig = {
+            type: 'bar', // Use 'bar' for vertical bars, 'horizontalBar' is deprecated
+            data: technicalSkillsData,
+            options: {
+                indexAxis: 'y', // This makes it a horizontal bar chart in Chart.js v3+
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { // X-axis for the proficiency scale
+                        beginAtZero: true,
+                        max: 100,
+                        grid: {
+                             color: '#4b5563' // gray-600 for grid lines
+                        },
+                        ticks: {
+                            color: '#d1d5db' // gray-300 for tick labels
+                        }
+                    },
+                    y: { // Y-axis for the skill categories
+                         grid: {
+                             color: '#4b5563' // gray-600 for grid lines
+                         },
+                         ticks: {
+                            color: '#d1d5db' // gray-300 for tick labels
+                         }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // Hide the legend for simplicity
+                    },
+                     tooltip: {
+                         callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.raw !== null) {
+                                    label += context.raw + '%'; // Display percentage
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        // Data for the character radar chart
+        const characterData = {
+            labels: ['Confident', 'Leadership', 'Sociable', 'Responsible', 'Adaptable', 'Innovative'], // Character traits
+            datasets: [{
+                label: 'Trait Strength',
+                data: [95, 88, 92, 98, 90, 85], // Arbitrary values (0-100)
+                backgroundColor: 'rgba(160, 126, 208, 0.4)', // Lighter purple with transparency
+                borderColor: '#a07ed0', // Lighter purple
+                pointBackgroundColor: '#a07ed0', // Lighter purple
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#a07ed0' // Lighter purple
+            }]
+        };
+
+        // Configuration options for the character radar chart
+        const characterConfig = {
+            type: 'radar',
+            data: characterData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: '#4b5563' // gray-600 for angle lines
+                        },
+                        grid: {
+                            color: '#4b5563' // gray-600 for grid lines
+                        },
+                        pointLabels: {
+                            color: '#93c5fd' // light blue for point labels (Tailwind blue-300)
+                        },
+                        ticks: {
+                            color: '#93c5fd', // light blue for tick labels (Tailwind blue-300)
+                            backdropColor: '#1f2937' // Dark background for tick labels
+                        },
+                        suggestedMin: 0, // Minimum value for the scale
+                        suggestedMax: 100 // Maximum value for the scale
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false // Hide the legend for simplicity
+                    },
+                    tooltip: {
+                         callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.raw !== null) {
+                                    label += context.raw + '%'; // Display percentage
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+
+        // Get the canvas elements and render the charts
+        window.onload = function() {
+             const technicalSkillsBarChartCanvas = document.getElementById('technicalSkillsBarChart');
+             if (technicalSkillsBarChartCanvas) {
+                new Chart(technicalSkillsBarChartCanvas, technicalSkillsConfig);
+             }
+
+             const characterRadarChartCanvas = document.getElementById('characterRadarChart');
+             if (characterRadarChartCanvas) {
+                new Chart(characterRadarChartCanvas, characterConfig);
+             }
+        };
+
+    </script>
 
 </body>
 </html>
