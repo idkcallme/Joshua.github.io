@@ -1,0 +1,156 @@
+/* Custom CSS for additional styling */
+
+/* Basic styling for the body and container */
+body {
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1000px; /* Adjust max-width as needed */
+}
+
+/* Styling for the sidebar */
+aside {
+     border-right: 1px solid #4a5568; /* Subtle border to separate sidebar */
+}
+
+/* Adjust padding for content */
+aside > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Styling for the main content area */
+main {
+    flex-grow: 1;
+}
+
+/* Style for the nested list in Skills section (if still used) */
+.list-circle {
+    list-style-type: circle;
+}
+
+/* Adding some hover effects to links */
+a {
+    transition: color 0.3s ease;
+}
+
+/* Styling for skill bars */
+.skill-bar {
+    background-color: #4a5568; /* Darker background for the bar */
+    border-radius: 9999px; /* Full rounded corners */
+    height: 8px; /* Height of the bar */
+    overflow: hidden; /* Hide overflow of the progress */
+}
+
+.skill-progress {
+    background-color: #3b82f6; /* Blue color for the progress */
+    height: 100%;
+    border-radius: 9999px; /* Full rounded corners */
+}
+
+/* Styling for the certificate items */
+.certificate-item {
+    /* Background and border are handled by Tailwind classes in HTML */
+    /* Add some subtle box shadow or other effects here if desired */
+    transition: transform 0.3s ease-in-out; /* Optional: Add a subtle hover effect */
+}
+
+.certificate-item:hover {
+    transform: translateY(-3px); /* Optional: Lift the certificate slightly on hover */
+}
+
+/* --- Print Styles --- */
+@media print {
+    body {
+        background-color: #fff !important; /* Ensure white background for printing */
+        color: #000 !important; /* Ensure black text for printing */
+        -webkit-print-color-adjust: exact; /* Keep colors if desired, use with caution */
+        print-color-adjust: exact;
+    }
+
+    .container {
+        box-shadow: none !important; /* Remove shadows */
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important; /* Use full width for print */
+    }
+
+    aside {
+        background-color: #f3f4f6 !important; /* Light background for sidebar in print */
+        color: #1f2937 !important; /* Dark text for sidebar in print */
+        border-right: 1px solid #d1d5db !important; /* Lighter border for print */
+        padding: 1rem !important; /* Adjust padding for print */
+        width: 30% !important; /* Maintain column width */
+        box-sizing: border-box; /* Include padding and border in the element's total width */
+    }
+
+    main {
+        background-color: #fff !important; /* Ensure white background for main content */
+        color: #1f2937 !important; /* Dark text for main content */
+        padding: 1rem !important; /* Adjust padding for print */
+        width: 70% !important; /* Maintain column width */
+        box-sizing: border-box;
+    }
+
+    h1, h2, h3, .sidebar h3 {
+        color: #1f2937 !important; /* Ensure dark headings in print */
+    }
+
+    .text-blue-400 {
+        color: #1f2937 !important; /* Ensure blue-colored text becomes dark in print */
+    }
+
+    .text-gray-400, .text-gray-300 {
+         color: #4b5563 !important; /* Adjust lighter gray text for print readability */
+    }
+
+
+    .border-gray-700 {
+        border-color: #d1d5db !important; /* Lighter border colors for print */
+    }
+
+    .border-blue-500, .border-blue-600 {
+         border-color: #60a5fa !important; /* Lighter blue borders for print */
+    }
+
+
+    .skill-bar {
+        background-color: #e5e7eb !important; /* Lighter background for skill bars */
+    }
+
+    .skill-progress {
+         background-color: #3b82f6 !important; /* Keep blue for progress or adjust */
+    }
+
+    .certificate-item {
+        background-color: #f3f4f6 !important; /* Light background for certificates */
+        border-color: #60a5fa !important; /* Lighter border for certificates */
+        box-shadow: none !important; /* Remove shadow */
+        transform: none !important; /* Remove hover transform */
+    }
+
+    .project-item .text-blue-400,
+    .project-item .text-yellow-500 {
+        color: #1f2937 !important; /* Ensure icons are dark in print */
+    }
+
+    /* Prevent elements from breaking across pages */
+    section, .project-item, .certificate-item {
+        page-break-inside: avoid;
+    }
+
+    /* Ensure links are underlined in print */
+    a {
+        text-decoration: underline !important;
+        color: #1f2937 !important; /* Ensure link color is dark */
+    }
+
+    /* Optional: Display URLs next to links */
+    /* a::after {
+        content: " (" attr(href) ")";
+        font-size: 90%;
+        word-break: break-all;
+    } */
+}
+
