@@ -62,14 +62,27 @@ a {
 
 /* --- Print Styles --- */
 @media print {
-    /* Ensure backgrounds and text are print-friendly */
+    /* Attempt to keep backgrounds and colors */
     body {
-        background-color: #fff !important; /* White background for print */
-        color: #000 !important; /* Black text for print */
-        /* Attempt to print background colors and images */
+        background-color: #1f2937 !important; /* Keep dark background */
+        color: #d1d5db !important; /* Keep light text */
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
     }
+
+    /* Keep dark background for sidebar and main content */
+    aside {
+        background-color: #1f2937 !important;
+        color: #d1d5db !important;
+        border-right-color: #4b5563 !important; /* Adjust border color for dark background */
+        border-bottom-color: #4b5563 !important; /* Adjust border color for dark background */
+    }
+
+    main {
+        background-color: #1f2937 !important;
+        color: #d1d5db !important;
+    }
+
 
     /* Remove shadows and adjust container size/padding */
     .container {
@@ -88,11 +101,6 @@ a {
 
     /* Adjust sidebar for print - make it full width and stack */
     aside {
-        /* Keep background color for visual separation if print-color-adjust is supported */
-        background-color: #f3f4f6 !important; /* Light background */
-        color: #1f2937 !important; /* Dark text */
-        border-right: none !important; /* Remove border */
-        border-bottom: 1px solid #d1d5db !important; /* Add bottom border */
         padding: 1rem !important;
         width: 100% !important; /* Make it full width */
         box-sizing: border-box;
@@ -100,13 +108,10 @@ a {
         display: block !important;
         margin-right: 0 !important; /* Remove right margin */
         margin-bottom: 1rem; /* Add bottom margin for spacing */
-        /* Removed page-break-after: always; to allow content to flow */
     }
 
     /* Adjust main content for print - make it full width and stack */
     main {
-        background-color: #fff !important; /* White background */
-        color: #1f2937 !important; /* Dark text */
         padding: 1rem !important;
         width: 100% !important; /* Make it full width */
         box-sizing: border-box;
@@ -114,68 +119,76 @@ a {
         display: block !important;
     }
 
-    /* Ensure headings and specific text colors are dark */
+    /* Ensure headings and specific text colors are readable on dark background */
     h1, h2, h3, .sidebar h3 {
-        color: #1f2937 !important;
+        color: #d1d5db !important; /* Light color for headings */
     }
 
     /* Adjust specific text colors for print */
     .text-blue-400, .text-blue-800 {
-        color: #1f2937 !important; /* Ensure blue colors become dark */
+        color: #93c5fd !important; /* Light blue color */
     }
 
     .text-gray-400, .text-gray-300 {
-         color: #4b5563 !important; /* Adjust lighter gray text */
+         color: #d1d5db !important; /* Light gray text */
     }
+
 
     /* Adjust border colors for print */
     .border-gray-700 {
-        border-color: #d1d5db !important;
+        border-color: #4b5563 !important; /* Adjust border color */
     }
 
     .border-blue-500, .border-blue-600 {
-         border-color: #60a5fa !important; /* Keep a distinct blue or change to gray */
+         border-color: #93c5fd !important; /* Adjust border color */
     }
 
     /* Adjust skill bar appearance for print */
     .skill-bar {
-        background-color: #e5e7eb !important;
+        background-color: #4b5563 !important; /* Darker background for the bar */
     }
 
     .skill-progress {
-         background-color: #3b82f6 !important; /* Keep blue or adjust */
+         background-color: #93c5fd !important; /* Light blue progress */
     }
 
     /* Adjust certificate item appearance for print */
     .certificate-item {
-        background-color: #f3f4f6 !important;
-        border-color: #60a5fa !important;
+        background-color: #4b5563 !important; /* Dark background */
+        border-color: #93c5fd !important; /* Light blue border */
         box-shadow: none !important;
         transform: none !important;
     }
 
-    /* Ensure project icons are dark */
+    /* Ensure project icons are visible on dark background */
     .project-item .text-blue-400,
     .project-item .text-yellow-500 {
-        color: #1f2937 !important;
+        color: #93c5fd !important; /* Light color for icons */
     }
 
-    /* Hide charts in print for better compatibility */
-    #personalityChart,
+    /* Attempt to display charts in print */
     #technicalSkillsBarChart,
     #characterRadarChart {
-        display: none !important;
+        display: block !important;
+        /* You might need to adjust size or add explicit height/width here if they don't render well */
+        /* width: 100% !important; */
+        /* height: 300px !important; */
     }
+
+     #personalityChart {
+         display: none !important; /* Keep pie chart hidden */
+     }
+
 
     /* Prevent elements from breaking across pages */
     section, .project-item, .certificate-item {
         page-break-inside: avoid;
     }
 
-    /* Ensure links are underlined and dark */
+    /* Ensure links are underlined and visible on dark background */
     a {
         text-decoration: underline !important;
-        color: #1f2937 !important;
+        color: #93c5fd !important; /* Light blue for links */
     }
 
     /* Optional: Display URLs next to links */
