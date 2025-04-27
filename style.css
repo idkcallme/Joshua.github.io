@@ -78,6 +78,7 @@ a {
         padding: 0 !important;
         width: 100% !important;
         max-width: none !important; /* Remove max-width constraint */
+        display: block !important; /* Ensure container is a block element */
     }
 
     /* Adjust sidebar for print */
@@ -89,6 +90,7 @@ a {
         width: 30% !important; /* Maintain column width */
         box-sizing: border-box;
         float: left; /* Ensure columns stay side-by-side if possible */
+        display: block !important; /* Ensure sidebar is a block element */
     }
 
     /* Adjust main content for print */
@@ -99,6 +101,7 @@ a {
         width: 70% !important; /* Maintain column width */
         box-sizing: border-box;
         float: left; /* Ensure columns stay side-by-side if possible */
+        display: block !important; /* Ensure main is a block element */
     }
 
     /* Ensure headings and specific text colors are dark */
@@ -177,6 +180,16 @@ a {
         content: "";
         display: table;
         clear: both;
+    }
+
+    /* Ensure the flex container behaves correctly in print */
+    .container > .flex {
+        display: block !important; /* Change flex to block in print */
+    }
+
+     /* Ensure the sidebar and main content have space between them */
+    aside {
+        margin-right: 1rem; /* Add some margin to the right of the sidebar */
     }
 }
 
