@@ -81,27 +81,35 @@ a {
         display: block !important; /* Ensure container is a block element */
     }
 
-    /* Adjust sidebar for print */
+    /* Ensure the flex container behaves correctly in print - stack elements */
+    .container > .flex {
+        display: block !important;
+    }
+
+    /* Adjust sidebar for print - make it full width and stack */
     aside {
         background-color: #f3f4f6 !important; /* Light background */
         color: #1f2937 !important; /* Dark text */
-        border-right: 1px solid #d1d5db !important; /* Lighter border */
+        border-right: none !important; /* Remove border */
+        border-bottom: 1px solid #d1d5db !important; /* Add bottom border */
         padding: 1rem !important;
-        width: 30% !important; /* Maintain column width */
+        width: 100% !important; /* Make it full width */
         box-sizing: border-box;
-        float: left; /* Ensure columns stay side-by-side if possible */
-        display: block !important; /* Ensure sidebar is a block element */
+        float: none !important; /* Remove float */
+        display: block !important;
+        margin-right: 0 !important; /* Remove right margin */
+        margin-bottom: 1rem; /* Add bottom margin for spacing */
     }
 
-    /* Adjust main content for print */
+    /* Adjust main content for print - make it full width and stack */
     main {
         background-color: #fff !important;
         color: #1f2937 !important;
         padding: 1rem !important;
-        width: 70% !important; /* Maintain column width */
+        width: 100% !important; /* Make it full width */
         box-sizing: border-box;
-        float: left; /* Ensure columns stay side-by-side if possible */
-        display: block !important; /* Ensure main is a block element */
+        float: none !important; /* Remove float */
+        display: block !important;
     }
 
     /* Ensure headings and specific text colors are dark */
@@ -175,21 +183,11 @@ a {
         word-break: break-all;
     } */
 
-    /* Clear floats after the main content */
+    /* Clear floats (though floats are removed, this is good practice) */
     main::after {
         content: "";
         display: table;
         clear: both;
-    }
-
-    /* Ensure the flex container behaves correctly in print */
-    .container > .flex {
-        display: block !important; /* Change flex to block in print */
-    }
-
-     /* Ensure the sidebar and main content have space between them */
-    aside {
-        margin-right: 1rem; /* Add some margin to the right of the sidebar */
     }
 }
 
