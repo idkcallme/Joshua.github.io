@@ -66,9 +66,8 @@ a {
     body {
         background-color: #fff !important;
         color: #000 !important;
-        /* Use 'exact' if you want to try and preserve colors, but 'auto' is safer */
-        /* -webkit-print-color-adjust: exact; */
-        /* print-color-adjust: exact; */
+        -webkit-print-color-adjust: exact; /* Attempt to print colors */
+        print-color-adjust: exact;
     }
 
     /* Remove shadows and adjust container size/padding */
@@ -78,7 +77,7 @@ a {
         padding: 0 !important;
         width: 100% !important;
         max-width: none !important; /* Remove max-width constraint */
-        display: block !important; /* Ensure container is a block element */
+        display: block !important;
     }
 
     /* Ensure the flex container behaves correctly in print - stack elements */
@@ -99,6 +98,7 @@ a {
         display: block !important;
         margin-right: 0 !important; /* Remove right margin */
         margin-bottom: 1rem; /* Add bottom margin for spacing */
+        page-break-after: always; /* Force a page break after the sidebar */
     }
 
     /* Adjust main content for print - make it full width and stack */
