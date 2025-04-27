@@ -52,6 +52,67 @@
              margin-right: 0.5rem;
              flex-shrink: 0;
          }
+
+         /* Basic Timeline Styling */
+         .timeline {
+             position: relative;
+             padding: 1rem 0;
+             margin-top: 1rem;
+         }
+
+         .timeline::before {
+             content: '';
+             position: absolute;
+             top: 0;
+             bottom: 0;
+             left: 10px; /* Adjust position of the line */
+             width: 2px;
+             background-color: #60a5fa; /* Light blue line */
+         }
+
+         .timeline-item {
+             position: relative;
+             margin-bottom: 1.5rem;
+             padding-left: 25px; /* Space for the dot */
+             transition: background-color 0.3s ease; /* Subtle hover effect */
+             border-radius: 0.25rem; /* Rounded corners for hover effect */
+             padding-top: 0.25rem;
+             padding-bottom: 0.25rem;
+             margin-left: 5px; /* Adjust margin to align with line */
+         }
+
+         .timeline-item:hover {
+             background-color: rgba(96, 165, 250, 0.1); /* Light blue background on hover */
+         }
+
+
+         .timeline-item::before {
+             content: '';
+             position: absolute;
+             top: 5px; /* Adjust to align with text baseline */
+             left: 4px; /* Align with the line */
+             width: 10px;
+             height: 10px;
+             border-radius: 50%;
+             background-color: #3b82f6; /* Blue dot */
+             border: 2px solid #1f2937; /* Dark background border */
+             z-index: 1;
+         }
+
+         .timeline-date {
+             font-size: 0.875rem; /* text-sm */
+             color: #9ca3af; /* gray-400 */
+             margin-bottom: 0.25rem;
+         }
+
+         .timeline-content {
+             font-size: 0.875rem; /* text-sm */
+             color: #d1d5db; /* gray-300 */
+         }
+
+         .timeline-content span {
+             margin-right: 0.5rem; /* Space between emoji and text */
+         }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-300">
@@ -88,6 +149,10 @@
                          <div class="flex items-center">
                              <span class="mr-3 text-blue-400">&#x1F4CD;</span>
                             <span>Brantford, ON</span>
+                        </div>
+                         <div class="flex items-center">
+                             <span class="mr-3 text-blue-400">&#x270A;</span>
+                            <a href="https://github.com/idkcallme" target="_blank" class="hover:underline text-gray-400 hover:text-blue-400">github.com/idkcallme</a>
                         </div>
                     </div>
                 </section>
@@ -169,7 +234,7 @@
                 </section>
 
                  <section class="mb-8 w-full">
-                    <h2 class="text-2xl font-semibold text-blue-400 mb-4 border-b border-gray-700 pb-2">PASSIONS</h2>
+                    <h2 class="text-2xl font-bold text-blue-400 mb-6 border-b-2 border-blue-600 pb-2">PASSIONS</h2>
                     <div class="text-gray-400 space-y-2 text-sm">
                          <p>🎨 Art & Pencil Drawing</p>
                          <p>🏀 Basketball</p>
@@ -180,8 +245,8 @@
                  </section>
 
                  <section class="mb-8 w-full">
-                    <h2 class="text-2xl font-semibold text-blue-400 mb-4 border-b border-gray-700 pb-2">HIGHLIGHTS</h2>
-                    <div class="grid grid-cols-2 gap-4 text-center text-gray-400 text-sm">
+                    <h2 class="text-2xl font-bold text-blue-400 mb-6 border-b-2 border-blue-600 pb-2">HIGHLIGHTS</h2>
+                    <div class="grid grid-cols-2 gap-4 text-center text-gray-400 text-sm mb-8">
                         <div>
                             <p class="text-2xl font-bold text-blue-500">3</p>
                             <p>Years IT Experience</p>
@@ -193,6 +258,69 @@
                          <div class="col-span-2">
                             <p class="text-2xl font-bold text-blue-500">30</p>
                             <p>Projects Completed</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline">
+                         <div class="timeline-item">
+                            <div class="timeline-date">Pre-2021</div>
+                            <div class="timeline-content"><span>💻</span> High School Co-op at Arco Computer (Computer build and repair, Windows installation)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Jul 2021</div>
+                            <div class="timeline-content"><span>🎓</span> High School Diploma</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">2023</div>
+                            <div class="timeline-content"><span>🤝</span> Co-op at City of Burlington</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">During COVID</div>
+                            <div class="timeline-content"><span>🛡️</span> HackerOne Reconnaissance</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">During COVID</div>
+                            <div class="timeline-content"><span>💻</span> Subnet Finder Project</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">Winter 2024</div>
+                            <div class="timeline-content"><span>⚙️</span> Custom Kernel Development Project</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">During Mohawk</div>
+                            <div class="timeline-content"><span>🏅</span> Google IT Support Professional Certificate</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">During Mohawk</div>
+                            <div class="timeline-content"><span>🏅</span> Microsoft Certified: Azure Fundamentals (AZ-900)</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">During Mohawk & Vosyn</div>
+                            <div class="timeline-content"><span>🏠</span> Home Network Infrastructure Design Project</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">During Vosyn (Project Lead)</div>
+                            <div class="timeline-content"><span>🤖</span> Slackbot Development Project</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">During Vosyn (Project Lead)</div>
+                            <div class="timeline-content"><span>📧</span> Bulk Email Sender Script Project</div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-date">Dec 2024</div>
+                            <div class="timeline-content"><span>🎓</span> Graduated Diploma, Network Engineering and Security Analyst from Mohawk College</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">Aug 2024 - Present</div>
+                            <div class="timeline-content"><span>💼</span> Network Engineer at Vosyn</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">Current Project</div>
+                            <div class="timeline-content"><span>🔊📧</span> EchoMail Project</div>
+                        </div>
+                         <div class="timeline-item">
+                            <div class="timeline-date">Sep 2025 (Expected)</div>
+                            <div class="timeline-content"><span>🏫</span> Start Bachelor of Engineering in Computer Engineering at Ontario Tech University</div>
                         </div>
                         </div>
                  </section>
