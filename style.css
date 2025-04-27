@@ -62,77 +62,96 @@ a {
 
 /* --- Print Styles --- */
 @media print {
+    /* Ensure backgrounds and text are print-friendly */
     body {
-        background-color: #fff !important; /* Ensure white background for printing */
-        color: #000 !important; /* Ensure black text for printing */
-        -webkit-print-color-adjust: exact; /* Keep colors if desired, use with caution */
-        print-color-adjust: exact;
+        background-color: #fff !important;
+        color: #000 !important;
+        /* Use 'exact' if you want to try and preserve colors, but 'auto' is safer */
+        /* -webkit-print-color-adjust: exact; */
+        /* print-color-adjust: exact; */
     }
 
+    /* Remove shadows and adjust container size/padding */
     .container {
-        box-shadow: none !important; /* Remove shadows */
+        box-shadow: none !important;
         margin: 0 !important;
         padding: 0 !important;
-        width: 100% !important; /* Use full width for print */
+        width: 100% !important;
+        max-width: none !important; /* Remove max-width constraint */
     }
 
+    /* Adjust sidebar for print */
     aside {
-        background-color: #f3f4f6 !important; /* Light background for sidebar in print */
-        color: #1f2937 !important; /* Dark text for sidebar in print */
-        border-right: 1px solid #d1d5db !important; /* Lighter border for print */
-        padding: 1rem !important; /* Adjust padding for print */
+        background-color: #f3f4f6 !important; /* Light background */
+        color: #1f2937 !important; /* Dark text */
+        border-right: 1px solid #d1d5db !important; /* Lighter border */
+        padding: 1rem !important;
         width: 30% !important; /* Maintain column width */
-        box-sizing: border-box; /* Include padding and border in the element's total width */
+        box-sizing: border-box;
+        float: left; /* Ensure columns stay side-by-side if possible */
     }
 
+    /* Adjust main content for print */
     main {
-        background-color: #fff !important; /* Ensure white background for main content */
-        color: #1f2937 !important; /* Dark text for main content */
-        padding: 1rem !important; /* Adjust padding for print */
+        background-color: #fff !important;
+        color: #1f2937 !important;
+        padding: 1rem !important;
         width: 70% !important; /* Maintain column width */
         box-sizing: border-box;
+        float: left; /* Ensure columns stay side-by-side if possible */
     }
 
+    /* Ensure headings and specific text colors are dark */
     h1, h2, h3, .sidebar h3 {
-        color: #1f2937 !important; /* Ensure dark headings in print */
+        color: #1f2937 !important;
     }
 
-    .text-blue-400 {
-        color: #1f2937 !important; /* Ensure blue-colored text becomes dark in print */
+    .text-blue-400, .text-blue-800 {
+        color: #1f2937 !important; /* Ensure blue colors become dark */
     }
 
     .text-gray-400, .text-gray-300 {
-         color: #4b5563 !important; /* Adjust lighter gray text for print readability */
+         color: #4b5563 !important; /* Adjust lighter gray text */
     }
 
 
+    /* Adjust border colors for print */
     .border-gray-700 {
-        border-color: #d1d5db !important; /* Lighter border colors for print */
+        border-color: #d1d5db !important;
     }
 
     .border-blue-500, .border-blue-600 {
-         border-color: #60a5fa !important; /* Lighter blue borders for print */
+         border-color: #60a5fa !important; /* Keep a distinct blue or change to gray */
     }
 
-
+    /* Adjust skill bar appearance for print */
     .skill-bar {
-        background-color: #e5e7eb !important; /* Lighter background for skill bars */
+        background-color: #e5e7eb !important;
     }
 
     .skill-progress {
-         background-color: #3b82f6 !important; /* Keep blue for progress or adjust */
+         background-color: #3b82f6 !important; /* Keep blue or adjust */
     }
 
+    /* Adjust certificate item appearance for print */
     .certificate-item {
-        background-color: #f3f4f6 !important; /* Light background for certificates */
-        border-color: #60a5fa !important; /* Lighter border for certificates */
-        box-shadow: none !important; /* Remove shadow */
-        transform: none !important; /* Remove hover transform */
+        background-color: #f3f4f6 !important;
+        border-color: #60a5fa !important;
+        box-shadow: none !important;
+        transform: none !important;
     }
 
+    /* Ensure project icons are dark */
     .project-item .text-blue-400,
     .project-item .text-yellow-500 {
-        color: #1f2937 !important; /* Ensure icons are dark in print */
+        color: #1f2937 !important;
+    }
+
+    /* Hide charts in print for better compatibility */
+    #personalityChart,
+    #technicalSkillsBarChart,
+    #characterRadarChart {
+        display: none !important;
     }
 
     /* Prevent elements from breaking across pages */
@@ -140,10 +159,10 @@ a {
         page-break-inside: avoid;
     }
 
-    /* Ensure links are underlined in print */
+    /* Ensure links are underlined and dark */
     a {
         text-decoration: underline !important;
-        color: #1f2937 !important; /* Ensure link color is dark */
+        color: #1f2937 !important;
     }
 
     /* Optional: Display URLs next to links */
@@ -153,9 +172,11 @@ a {
         word-break: break-all;
     } */
 
-    /* Hide the pie chart in print */
-    #personalityChart {
-        display: none !important;
+    /* Clear floats after the main content */
+    main::after {
+        content: "";
+        display: table;
+        clear: both;
     }
 }
 
