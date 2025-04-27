@@ -152,5 +152,10 @@ a {
         font-size: 90%;
         word-break: break-all;
     } */
+
+    /* Hide the pie chart in print */
+    #personalityChart {
+        display: none !important;
+    }
 }
 
