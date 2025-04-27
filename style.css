@@ -64,10 +64,11 @@ a {
 @media print {
     /* Ensure backgrounds and text are print-friendly */
     body {
-        background-color: #fff !important;
-        color: #000 !important;
-        -webkit-print-color-adjust: exact; /* Attempt to print colors */
-        print-color-adjust: exact;
+        background-color: #fff !important; /* White background for print */
+        color: #000 !important; /* Black text for print */
+        /* Attempt to print background colors and images */
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
     /* Remove shadows and adjust container size/padding */
@@ -87,6 +88,7 @@ a {
 
     /* Adjust sidebar for print - make it full width and stack */
     aside {
+        /* Keep background color for visual separation if print-color-adjust is supported */
         background-color: #f3f4f6 !important; /* Light background */
         color: #1f2937 !important; /* Dark text */
         border-right: none !important; /* Remove border */
@@ -98,13 +100,13 @@ a {
         display: block !important;
         margin-right: 0 !important; /* Remove right margin */
         margin-bottom: 1rem; /* Add bottom margin for spacing */
-        page-break-after: always; /* Force a page break after the sidebar */
+        /* Removed page-break-after: always; to allow content to flow */
     }
 
     /* Adjust main content for print - make it full width and stack */
     main {
-        background-color: #fff !important;
-        color: #1f2937 !important;
+        background-color: #fff !important; /* White background */
+        color: #1f2937 !important; /* Dark text */
         padding: 1rem !important;
         width: 100% !important; /* Make it full width */
         box-sizing: border-box;
@@ -117,6 +119,7 @@ a {
         color: #1f2937 !important;
     }
 
+    /* Adjust specific text colors for print */
     .text-blue-400, .text-blue-800 {
         color: #1f2937 !important; /* Ensure blue colors become dark */
     }
@@ -124,7 +127,6 @@ a {
     .text-gray-400, .text-gray-300 {
          color: #4b5563 !important; /* Adjust lighter gray text */
     }
-
 
     /* Adjust border colors for print */
     .border-gray-700 {
